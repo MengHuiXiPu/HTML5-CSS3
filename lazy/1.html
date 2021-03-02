@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <p>图片懒加载可以帮助提升网站的性能和响应能力。图片懒加载可以避免立即加载那些不在屏幕中立即显示的图片素材，当用户滚动临近图片时再去开始加载。
+            换言之，当用户滚动到图片出现时再进行加载，否则不加载。这就降低了屏幕内容展示过程中的图片素材的请求数量，提升了站点性能。
+            往往我们都是通过javascript来实现的，通过监听页面滚动事件来确定加载对应的资源。但是，在不完全考虑兼容性的场景下，我们其实可以直接通过HTML来直接实现。
+            注：本篇的提到的标签和属性的兼容性需要大家根据实际场景来选取是否使用
+            可以通过为图片文件添加loading="lazy"的属性来实现:</p>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </div>
+    <img src="./1.png" alt="lazy" loading='lazy' width="200px" height="200px">
+    <img src="./2.png" alt="" width="200px" height="200px">
+    <!-- <img src="./1.png" alt="" width="200px" height="400px"> -->
+
+
+</body>
+
+</html>
+<style>
+    li {
+        width: 50px;
+        background: red;
+        margin-bottom: 20px;
+    }
+</style>
