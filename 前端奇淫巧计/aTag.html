@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    一
+// 很多时候我们有从一个URL中提取域名，查询关键字，变量参数值等的需要,然而处理 url 字符串是比较麻烦的，可以使用 a 标签自动解析 url。
+// 主要方法就是在JS中创建一个a标签，然后将需要处理的URL赋值给我们新创建的a标签的href属性，然后就可以得到我们想要的东西了。
+var a = document.createElement('a');
+a.href = 'https://baidu.cn/user/2796746682939054/posts';
+console.log(a.host);
+
+// 利用这一方法，稍微进行封装一下，就可以得到一个非常实用的工具函数了，下面提供一个网上常见的封装示例。
+function urlParse(url, key) {
+  var a = document.createElement('a')
+  a.href = url
+  var result = {
+    href: url,
+    protocol: a.protocol.replace(':', ''),
+    port: a.port,
+    query: a.search,
+    params: (function(){
+      var ret = {}, centArr,
+        seg = a.search.replace(/^\?/, '').replace(/^\?/,'').split('&')
+      for (i = 0, len = seg.length; i < len; i ++) {
+        if (!seg[i]) { continue }
+        centArr = seg[i].split('=')
+        ret[centArr[0]] = centArr[1]
+      }
+      return ret
+    }()),
+    hash: a.hash,
+    file: (a.pathname.match(/\/([^\/?#]+)$/i) || [, ''])[1],
+    path: a.pathname.replace(/^([^\/])/, '/$1'),
+    relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [, ''])[1],
+    segments: a.pathname.replace(/^\//, '').split('/')
+  }
+  a = null
+  return key ? result[key] : result
+}
+
+// 二、最新的h5 特性也能做到
+var url = new URL('https://www.baidu.com/')
+url.hash
+console.log(url.hash, url.host,url.hostname)
+</script>
