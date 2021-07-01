@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div id="div_body">
+            <span class="span1" id="span1">不锁定</span>
+            <span class="span2" id="span2">锁定</span>
+        </div>
+        <div class="btn_line">
+            <button id="btn">切换按钮</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<style>
+    #div_body {
+        margin: 100px auto;
+        height: 50px;
+        width: 150px;
+        display: flex;
+        border-radius: 25px;
+        justify-content: space-between;
+        border:1px solid black
+    }
+
+    span {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        text-align: center;
+        line-height: 50px;
+    }
+
+    .span1 {
+        background-color: yellow;
+        border: 1px soli #cccc;
+        visibility: visible;
+    }
+
+    .span2 {
+        background-color: red;
+        visibility: none;
+    }
+
+
+    #btn {
+        margin: 0 auto;
+        width: 80px;
+        height: 50px;
+        text-align: center;
+    }
+    .btn_line{
+        margin: 100px auto;
+        height: 50px;
+        width: 100%;
+    }
+</style>
+
+<script>
+    const btn = document.getElementById('btn')
+    const span1 = document.getElementById('span1')
+    const span2 = document.getElementById('span2')
+    const div_body = document.getElementById('div_body')
+    let time = false
+
+    btn.onclick = function () {
+        console.log(span1)
+        if(time){
+            span1.style.visibility='hidden'
+            span2.style.visibility='visible'
+            div_body.style.background='red'
+        }else{
+            span1.style.visibility='visible'
+            span2.style.visibility='hidden'
+            div_body.style.background='none'
+        }
+        time = !time
+    }
+
+
+</script>
